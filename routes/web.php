@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MerkController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\MerkController;
 use App\Http\Controllers\TransaksiCOntroller;
 
 /*
@@ -17,10 +18,11 @@ use App\Http\Controllers\TransaksiCOntroller;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [HomeController::class , 'index'])->name('home');
 Route::get('/produk', [ProdukController::class , 'index'])->name('produk-index');
 Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk-create');
 Route::post('/produk/store',[ProdukController::class, 'storeProduk'])->name('produk-store');
@@ -52,6 +54,10 @@ Route::get('/showtransaksi/{id_transaction}', [TransaksiController::class, 'show
 Route::post('/transaksi/update{id_transaction}', [TransaksiController::class, 'updateTrans'])->name('trans-update');
 Route::get('/transaksi/delete/{id_transaction}', [TransaksiController::class, 'deleteTrans'])->name('trans-delete');
 Route::get('/transaksi/softdelete{id_transaction}', [TransaksiController::class, 'softDelete'])->name('trans-softdelete');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 

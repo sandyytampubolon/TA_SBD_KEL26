@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Table</title>
+    <title>Merk Table</title>
     <!-- Include Bootstrap CSS (you can replace the CDN link with your local file if needed) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    @if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -39,7 +45,7 @@
 
 
 <div class="container mt-5">
-    <h2>Product Table</h2>
+    <h2>Merk Table</h2>
     <a type="button" class="btn btn-info" href="{{route('merk-create')}}">ADD MERK</a>
     <table class="table">
         <thead>

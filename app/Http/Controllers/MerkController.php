@@ -10,7 +10,9 @@ class MerkController extends Controller
 {
     public function index()
     {
-        $dataMerk = DB::select('SELECT * FROM merks');
+        $dataMerk = DB::table('merks')
+            ->whereNull('deleted_at') 
+            ->get();
 
         return view('merk-index', compact('dataMerk'));
     }
@@ -61,10 +63,25 @@ class MerkController extends Controller
 
     public function deleteMerk($id_merk)
     {
-        DB::delete("DELETE FROM merks WHERE id_merk = :id_merk", ['id_merk' => $id_merk]);
-
-        return redirect(route('merk-index'));
+        
+        try {
+            
+            DB::delete("DELETE FROM merks WHERE id_merk = :id_merk", ['id_merk' => $id_merk]);
+            return redirect(route('merk-index'));
+        } catch (\Exception $e) {
+            
+            if ($e->getCode() === '23000') {
+                return redirect(route('merk-index'))->with('error', 'Data tidak dapat dihapus karena digunakan oleh tabel lain.');
+            }  else {
+                
+                return redirect(route('merk-index'));
+            }
+           
+        }
+        
+    
     }
+
 
 
 
@@ -89,9 +106,12 @@ class MerkController extends Controller
 
     public function softDelete(Request $request, $id_merk)
     {
-        $dataMerk = Merks::findOrFail($id_merk);
-        $dataMerk->delete();
-
-        return redirect()->route('merk-softdelete')->with('success', 'Data berhasil dihapus secara lunak.');
+        
+        DB::table('merks')
+            ->where('id_merk', $id_merk)
+            ->update(['deleted_at' => now()]);
+    
+        return redirect()->route('merk-index')->with('success', 'Data berhasil dihapus secara lunak.');
     }
+    
 }
