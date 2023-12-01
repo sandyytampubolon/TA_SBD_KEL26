@@ -21,7 +21,7 @@
                
             </div>
             <button type="button" class="btn btn-primary">
-                <a href="{{ route('produk-index') }}" style="color: white; text-decoration: none;">
+                <a href="{{ route('vinyl-index') }}" style="color: white; text-decoration: none;">
                     {{ __('Ke Halaman Produk') }}
                 </a>
             </button>
