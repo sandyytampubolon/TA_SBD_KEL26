@@ -11,27 +11,28 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">TA SBD KEL 10</a>
+        <a class="navbar-brand" href="#">VINYL STORE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('pelanggan-index')}}">Pelanggan</a>
+                    <a class="nav-link" href="{{route('customer-index')}}">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk-index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('vinyl-index') }}">Vinyl</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('merk-index')}}">Merk</a>
+                    <a class="nav-link" href="{{route('category-index')}}">Category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('trans-index')}}">Transaksi</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('join-index')}}">Join</a>
+                </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -40,7 +41,7 @@
 
 <div class="container mt-5">
     <h2>Transaction Table</h2>
-    <a type="button" class="btn btn-info" href="{{route('trans-create')}}">ADD TRANSAKSI</a>
+    <a type="button" class="btn btn-info" href="{{ route('trans-create') }}">ADD TRANSAKSI</a>
     <table class="table">
         <thead>
             <tr>
@@ -56,21 +57,22 @@
         @foreach($dataTrans as $row)
             <tbody>
                 <tr>
-                    <th scope="row">{{$row->id_transaction}}</th>
-                    <td>{{$row->fk_id_item}}</td>
-                    <td>{{$row->transaction_date}}</td>
-                    <td>{{$row->fk_id_pelanggan}}</td>
-                    <td>{{$row->item_amount}}</td>
+                    <th scope="row">{{ $row->id_transaction }}</th>
+                    <td>{{ $row->fk_id_vinyl }}</td>
+                    <td>{{ $row->transaction_date }}</td>
+                    <td>{{ $row->fk_id_customer }}</td>
+                    <td>{{ $row->item_amount }}</td>
                     <td>
-                        <a type="button" class="btn btn-danger" href="{{route('trans-delete', $row->id_transaction)}}">Delete</a>
-                        <a type="button" class="btn btn-danger" href="{{route('trans-softdelete', $row->id_transaction)}}">Soft Delete</a>
-                        <a type="button" class="btn btn-info" href="{{route('trans-show',$row->id_transaction)}}">Edit</a>
+                        <a type="button" class="btn btn-danger" href="{{ route('trans-delete', $row->id_transaction) }}">Delete</a>
+                        <a type="button" class="btn btn-danger" href="{{ route('trans-softdelete', $row->id_transaction) }}">Soft Delete</a>
+                        <a type="button" class="btn btn-info" href="{{ route('trans-show', $row->id_transaction) }}">Edit</a>
                     </td>
                 </tr>
             </tbody>
         @endforeach
     </table>
 </div>
+
 
 
 

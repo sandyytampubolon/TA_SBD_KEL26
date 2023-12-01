@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>PRODUKCREATE</title>
+    <title>PRODUK n MERK CREATE</title>
 </head>
 
 <body>
@@ -39,38 +39,34 @@
     </div>
 </nav>
 
-<div class="container mt-5">
-    <!-- Form Transaksi -->
-    <form method="POST" enctype="multipart/form-data" action="{{ route('trans-store') }}">
-        @csrf
-        <h2>Form Transaksi</h2>
-        <div class="mb-3">
-            <label for="id_transaction" class="form-label">ID Transaction</label>
-            <input type="text" class="form-control" id="id_transaction" name="id_transaction">
-        </div>
-        <div class="mb-3">
-            <label for="fk_id_vinyl" class="form-label">ID Vinyl</label>
-            <input type="text" class="form-control" id="fk_id_vinyl" name="fk_id_vinyl">
-        </div>
-        <div class="mb-3">
-            <label for="fk_id_customer" class="form-label">ID Customer</label>
-            <input type="text" class="form-control" id="fk_id_customer" name="fk_id_customer">
-        </div>
-        <div class="mb-3">
-            <label for="transaction_date" class="form-label">Transaction Date</label>
-            <input type="date" class="form-control" id="transaction_date" name="transaction_date">
-        </div>
-        <div class="mb-3">
-            <label for="item_amount" class="form-label">Item Amount</label>
-            <input type="text" class="form-control" id="item_amount" name="item_amount">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+
+    <div class="container mt-5">
+        <!-- Form Produk -->
 
 
-<!-- Link to Bootstrap JavaScript (optional) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-</body>
+        <form method="POST" enctype="multipart/form-data" action="{{route('vinyl-update', $dataVinyl->id_vinyl)}}">
+    @CSRF
+    <h2>Form Vinyl</h2>
+    <div class="mb-3">
+        <label for="id_vinyl" class="form-label">ID Vinyl</label>
+        <input type="text" class="form-control" value="{{$dataVinyl->id_vinyl}}" name="id_vinyl">
+    </div>
+    <div class="mb-3">
+        <label for="nama_vinyl" class="form-label">Nama Vinyl</label>
+        <input type="text" class="form-control" id="nama_vinyl" value="{{$dataVinyl->nama_vinyl}}" name="nama_vinyl">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" value="{{$dataVinyl->price}}" name="price">
+    </div>
+    <div class="mb-3">
+        <label for="fk_id_category" class="form-label">ID Category</label>
+        <input type="text" class="form-control" id="fk_id_category" value="{{$dataVinyl->fk_id_category}}" name="fk_id_category">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+        </body>
 
 </html>

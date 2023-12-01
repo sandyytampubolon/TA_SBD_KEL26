@@ -14,27 +14,28 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">TA SBD KEL 10</a>
+        <a class="navbar-brand" href="#">VINYL STORE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('pelanggan-index')}}">Pelanggan</a>
+                    <a class="nav-link" href="{{route('customer-index')}}">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk-index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('vinyl-index') }}">Vinyl</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Merk</a>
+                    <a class="nav-link" href="{{route('category-index')}}">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Transaksi</a>
+                    <a class="nav-link" href="{{route('trans-index')}}">Transaksi</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('join-index')}}">Join</a>
+                </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -42,29 +43,28 @@
     <div class="container mt-5">
         <!-- Form Produk -->
 
-        <form method="POST" enctype="multipart/form-data" action="{{route('produk-store')}}">
-
-        @CSRF
-            <h2>Form Produk</h2>
+        <form method="POST" enctype="multipart/form-data" action="{{route('vinyl-store')}}">
+            @CSRF
+            <h2>Form Vinyl</h2>
             <div class="mb-3">
-                <label for="id_item" class="form-label">ID Produk</label>
-                <input type="text" class="form-control" id="id_item" name="id_item">
+                <label for="id_vinyl" class="form-label">ID Vinyl</label>
+                <input type="text" class="form-control" id="id_vinyl" name="id_vinyl">
             </div>
             <div class="mb-3">
-                <label for="nama_barang" class="form-label">Nama Barang</label>
-                <input type="text" class="form-control" id="nama_barang" name="nama_barang">
+                <label for="nama_vinyl" class="form-label">Nama Vinyl</label>
+                <input type="text" class="form-control" id="nama_vinyl" name="nama_vinyl">
             </div>
             <div class="mb-3">
-                <label for="harga_barang" class="form-label">Harga Barang</label>
-                <input type="text" class="form-control" id="harga_barang" name="harga_barang">
+                <label for="price" class="form-label">Price</label>
+                <input type="text" class="form-control" id="price" name="price">
             </div>
-
             <div class="mb-3">
-                <label for="fk_id_merk" class="form-label">ID Merk</label>
-                <input type="text" class="form-control" id="fk_id_merk" name="fk_id_merk">
+                <label for="fk_id_category" class="form-label">ID Category</label>
+                <input type="text" class="form-control" id="fk_id_category" name="fk_id_category">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
 
     </div>
 

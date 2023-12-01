@@ -10,14 +10,13 @@ class Produks extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $table = 'produks'; // Replace 'nama_tabel' with the actual table name
+    protected $table = 'vinyls'; // Replace 'nama_tabel' with the actual table name
 
-    protected $primaryKey = 'id_item';
+    protected $primaryKey = 'id_vinyl';
 
     protected $fillable = [
-        'id_item',
-        'nama_barang',
-        'harga_barang',
-        'fk_id_merk'
+        'id_vinyl',
+        'nama_vinyl',
+        'price'
     ];
 }

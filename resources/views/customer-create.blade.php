@@ -14,27 +14,28 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">TA SBD KEL 10</a>
+        <a class="navbar-brand" href="#">VINYL STORE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('pelanggan-index')}}">Pelanggan</a>
+                    <a class="nav-link" href="{{route('customer-index')}}">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk-index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('vinyl-index') }}">Vinyl</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Merk</a>
+                    <a class="nav-link" href="{{route('category-index')}}">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Transaksi</a>
+                    <a class="nav-link" href="{{route('trans-index')}}">Transaksi</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('join-index')}}">Join</a>
+                </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -42,27 +43,28 @@
     <div class="container mt-5">
         <!-- Form Produk -->
 
-        <form method="POST" enctype="multipart/form-data" action="{{ route('pelanggan-store') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('customer-store') }}">
     @CSRF
-    <h2>Form Pelanggan</h2>
+    <h2>Form Customer</h2>
     <div class="mb-3">
-        <label for="id_pelanggan" class="form-label">ID Pelanggan</label>
-        <input type="text" class="form-control" id="id_pelanggan" name="id_pelanggan">
+        <label for="id_customer" class="form-label">ID Customer</label>
+        <input type="text" class="form-control" id="id_customer" name="id_customer">
     </div>
     <div class="mb-3">
-        <label for="nama_pelanggan" class="form-label">Nama Pelanggan</label>
-        <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan">
+        <label for="nama" class="form-label">Nama</label>
+        <input type="text" class="form-control" id="nama" name="nama">
     </div>
     <div class="mb-3">
         <label for="alamat" class="form-label">Alamat</label>
         <input type="text" class="form-control" id="alamat" name="alamat">
     </div>
     <div class="mb-3">
-        <label for="loyalty_rank" class="form-label">Loyalty Rank</label>
-        <input type="text" class="form-control" id="loyalty_rank" name="loyalty_rank">
+        <label for="age" class="form-label">Age</label>
+        <input type="text" class="form-control" id="age" name="age">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 
 
     </div>

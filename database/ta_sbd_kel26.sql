@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 09:28 AM
+-- Generation Time: Dec 01, 2023 at 05:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -18,8 +18,55 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ta_sbd_kel10`
+-- Database: `ta_sbd_kel26`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id_category` int(11) NOT NULL,
+  `nama_category` varchar(200) NOT NULL,
+  `pop_rate` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`id_category`, `nama_category`, `pop_rate`) VALUES
+(1, 'Electronics Arts', 30),
+(2, 'Accessories', 20),
+(3, 'Audio Band', 40),
+(4, 'Newest Vinyl Categories', 80);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customers`
+--
+
+CREATE TABLE `customers` (
+  `id_customer` int(11) NOT NULL,
+  `nama` varchar(200) NOT NULL,
+  `alamat` varchar(200) NOT NULL,
+  `age` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id_customer`, `nama`, `alamat`, `age`) VALUES
+(1, 'Joni', 'Sipodang Jaya', 25),
+(2, 'Nixon', 'Semarang', 30),
+(3, 'Leo', 'Unnes', 28),
+(4, 'Elsa', 'Elsa Street', 22),
+(5, 'Farhan', 'Farhan Street', 33),
+(6, 'Sandy', 'Sumatra', 19);
 
 -- --------------------------------------------------------
 
@@ -36,29 +83,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `merks`
---
-
-CREATE TABLE `merks` (
-  `id_merk` int(11) NOT NULL,
-  `nama_merk` varchar(200) NOT NULL,
-  `country` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `merks`
---
-
-INSERT INTO `merks` (`id_merk`, `nama_merk`, `country`) VALUES
-(1, 'Samsung', 'South Korea'),
-(2, 'Apple', 'US'),
-(3, 'Huawei', 'China'),
-(4, 'Vivo', 'China'),
-(5, 'Oppo', 'China');
 
 -- --------------------------------------------------------
 
@@ -80,10 +104,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_11_28_112616_add_deleted_at_to_nama_tabel', 2),
-(6, '2023_11_28_113044_add_deleted_at_to_produks_table', 3),
-(7, '2023_11_28_113849_add_deleted_at_to_produks_table', 4);
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1);
 
 -- --------------------------------------------------------
 
@@ -96,31 +117,6 @@ CREATE TABLE `password_resets` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pelanggans`
---
-
-CREATE TABLE `pelanggans` (
-  `id_pelanggan` int(11) NOT NULL,
-  `nama_pelanggan` varchar(200) NOT NULL,
-  `alamat` varchar(200) NOT NULL,
-  `loyalty_rank` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `pelanggans`
---
-
-INSERT INTO `pelanggans` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `loyalty_rank`) VALUES
-(1, 'Ratna', 'Ahmad Street', 'A'),
-(2, 'Agoy Yogas', 'Budi Street', 'C'),
-(3, 'Yuda Aduy', 'Aminah Street 5', 'B'),
-(4, 'Donito', 'John Street', 'C'),
-(5, 'Sutan', 'Sutan Street', 'S'),
-(6, 'Sultan', 'Sultan Street', 'C');
 
 -- --------------------------------------------------------
 
@@ -144,52 +140,25 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produks`
+-- Table structure for table `transaksis`
 --
 
-CREATE TABLE `produks` (
-  `id_item` int(11) NOT NULL,
-  `nama_barang` varchar(200) NOT NULL,
-  `harga_barang` int(11) NOT NULL,
-  `fk_id_merk` int(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `produks`
---
-
-INSERT INTO `produks` (`id_item`, `nama_barang`, `harga_barang`, `fk_id_merk`) VALUES
-(1, 'A51 second', 5000000, 1),
-(2, 'A533', 50000000, 1),
-(3, 'Iphone11', 100000, 1),
-(4, 'P30 Pro', 100000, 3),
-(5, 'Oppo A53', 200000, 5),
-(6, 'Vivo V60', 200000, 4),
-(7, 'A50s', 100000, 1),
-(8, 'Ipad 6 Pro', 200000, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi_tbs`
---
-
-CREATE TABLE `transaksi_tbs` (
+CREATE TABLE `transaksis` (
   `id_transaction` int(11) NOT NULL,
-  `fk_id_pelanggan` int(11) DEFAULT NULL,
-  `fk_id_item` int(11) DEFAULT NULL,
+  `fk_id_customer` int(11) DEFAULT NULL,
+  `fk_id_vinyl` int(11) DEFAULT NULL,
+  `fk_id_category` int(11) DEFAULT NULL,
   `transaction_date` date NOT NULL,
   `item_amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `transaksi_tbs`
+-- Dumping data for table `transaksis`
 --
 
-INSERT INTO `transaksi_tbs` (`id_transaction`, `fk_id_pelanggan`, `fk_id_item`, `transaction_date`, `item_amount`) VALUES
-(1, 4, 3, '2023-11-17', 2),
-(2, 1, 4, '2023-11-17', 1),
-(3, 2, 1, '2023-11-29', 2);
+INSERT INTO `transaksis` (`id_transaction`, `fk_id_customer`, `fk_id_vinyl`, `fk_id_category`, `transaction_date`, `item_amount`) VALUES
+(1, 2, 3, NULL, '2023-12-14', 1),
+(2, 4, 3, NULL, '2023-12-06', 123);
 
 -- --------------------------------------------------------
 
@@ -213,11 +182,47 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ratna', 'ratna@gmail.com', NULL, '$2y$10$qojhzpMw2AIqpuNcb8jHJuGQwsLmMXuR.dm05KfDi/py3p8JXLU2y', NULL, '2023-11-28 05:48:52', '2023-11-28 05:48:52');
+(1, 'Ratna Goeng Permadi', 'ratnapermadi07@gmail.com', NULL, '$2y$10$rG8AFvTAffXOY4v6MG/BQePneKjBqkzoXo5mzRmtofHfLTn0LhPya', NULL, '2023-12-01 06:44:44', '2023-12-01 06:44:44');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vinyls`
+--
+
+CREATE TABLE `vinyls` (
+  `id_vinyl` int(11) NOT NULL,
+  `nama_vinyl` varchar(200) NOT NULL,
+  `price` int(11) NOT NULL,
+  `fk_id_category` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `vinyls`
+--
+
+INSERT INTO `vinyls` (`id_vinyl`, `nama_vinyl`, `price`, `fk_id_category`) VALUES
+(1, 'Retro Beats Vinyl', 8000, 1),
+(2, 'Digital Groove Vinyl', 50000, 2),
+(3, 'Powerful Sound Vinyl', 300000, 3),
+(4, 'Studio Beats Vinyl', 200000, 2),
+(5, 'Audio Bliss Vinyl', 250000, 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id_customer`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -225,12 +230,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
-
---
--- Indexes for table `merks`
---
-ALTER TABLE `merks`
-  ADD PRIMARY KEY (`id_merk`);
 
 --
 -- Indexes for table `migrations`
@@ -242,13 +241,7 @@ ALTER TABLE `migrations`
 -- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
-  ADD PRIMARY KEY (`email`);
-
---
--- Indexes for table `pelanggans`
---
-ALTER TABLE `pelanggans`
-  ADD PRIMARY KEY (`id_pelanggan`);
+  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `personal_access_tokens`
@@ -259,19 +252,13 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `produks`
+-- Indexes for table `transaksis`
 --
-ALTER TABLE `produks`
-  ADD PRIMARY KEY (`id_item`),
-  ADD KEY `fk_id_merk` (`fk_id_merk`);
-
---
--- Indexes for table `transaksi_tbs`
---
-ALTER TABLE `transaksi_tbs`
+ALTER TABLE `transaksis`
   ADD PRIMARY KEY (`id_transaction`),
-  ADD KEY `fk_id_pelanggan` (`fk_id_pelanggan`),
-  ADD KEY `fk_id_item` (`fk_id_item`);
+  ADD KEY `fk_id_customer` (`fk_id_customer`),
+  ADD KEY `fk_id_vinyl` (`fk_id_vinyl`),
+  ADD KEY `fk_id_category` (`fk_id_category`);
 
 --
 -- Indexes for table `users`
@@ -279,6 +266,12 @@ ALTER TABLE `transaksi_tbs`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `vinyls`
+--
+ALTER TABLE `vinyls`
+  ADD PRIMARY KEY (`id_vinyl`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -294,7 +287,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -313,17 +306,12 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `produks`
+-- Constraints for table `transaksis`
 --
-ALTER TABLE `produks`
-  ADD CONSTRAINT `fk_id_merk` FOREIGN KEY (`fk_id_merk`) REFERENCES `merks` (`id_merk`);
-
---
--- Constraints for table `transaksi_tbs`
---
-ALTER TABLE `transaksi_tbs`
-  ADD CONSTRAINT `transaksi_tbs_ibfk_1` FOREIGN KEY (`fk_id_pelanggan`) REFERENCES `pelanggans` (`id_pelanggan`),
-  ADD CONSTRAINT `transaksi_tbs_ibfk_2` FOREIGN KEY (`fk_id_item`) REFERENCES `produks` (`id_item`);
+ALTER TABLE `transaksis`
+  ADD CONSTRAINT `transaksis_ibfk_1` FOREIGN KEY (`fk_id_customer`) REFERENCES `customers` (`id_customer`),
+  ADD CONSTRAINT `transaksis_ibfk_2` FOREIGN KEY (`fk_id_vinyl`) REFERENCES `vinyls` (`id_vinyl`),
+  ADD CONSTRAINT `transaksis_ibfk_3` FOREIGN KEY (`fk_id_category`) REFERENCES `categories` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

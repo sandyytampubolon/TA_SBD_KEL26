@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MerkController;
-use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\TransaksiCOntroller;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VinylController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,43 +18,41 @@ use App\Http\Controllers\TransaksiCOntroller;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [HomeController::class , 'index'])->name('home');
-Route::get('/produk', [ProdukController::class , 'index'])->name('produk-index');
-Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk-create');
-Route::post('/produk/store',[ProdukController::class, 'storeProduk'])->name('produk-store');
-Route::get('/showproduk{id_item}',[ProdukController::class, 'showProduk'])->name('produk-show');
-Route::post('/produk/update{id_item}',[ProdukController::class, 'updateProduk'])->name('produk-update');
-Route::get('/produk/delete{id_item}',[ProdukController::class, 'deleteProduk'])->name('produk-delete');
-Route::get('/produk/softdelete{id_item}',[ProdukController::class, 'softDelete'])->name('produk-softdelete');
+Route::get('/vinyl', [VinylController::class , 'index'])->name('vinyl-index');
+Route::get('/vinyl/create', [VinylController::class, 'create'])->name('vinyl-create');
+Route::post('/vinyl/store',[VinylController::class, 'storeVinyl'])->name('vinyl-store');
+Route::get('/showvinyl/{id_vinyl}',[VinylController::class, 'showVinyl'])->name('vinyl-show');
+Route::post('/vinyl/update{id_vinyl}',[VinylController::class, 'updateVinyl'])->name('vinyl-update');
+Route::get('/vinyl/delete{id_vinyl}',[VinylController::class, 'deleteVinyl'])->name('vinyl-delete');
+Route::get('/vinyl/softdelete{id_vinyl}',[VinylController::class, 'softDelete'])->name('vinyl-softdelete');
 
-Route::get('/pelanggan', [PelangganController::class, 'index'])->name('pelanggan-index');
-Route::get('/pelanggan/create', [PelangganController::class, 'create'])->name('pelanggan-create');
-Route::post('/pelanggan/store', [PelangganController::class, 'storePelanggan'])->name('pelanggan-store');
-Route::get('/showpelanggan/{id_pelanggan}', [PelangganController::class, 'showPelanggan'])->name('pelanggan-show');
-Route::post('/pelanggan/update{id_pelanggan}', [PelangganController::class, 'updatePelanggan'])->name('pelanggan-update');
-Route::get('/pelanggan/delete/{id_pelanggan}', [PelangganController::class, 'deletePelanggan'])->name('pelanggan-delete');
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer-index');
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer-create');
+Route::post('/customer/store', [CustomerController::class, 'storeCustomer'])->name('customer-store');
+Route::get('/showcustomer/{id_customer}', [CustomerController::class, 'showCustomer'])->name('customer-show');
+Route::post('/customer/update{id_customer}', [CustomerController::class, 'updateCustomer'])->name('customer-update');
+Route::get('/customer/delete/{id_customer}', [CustomerController::class, 'deleteCustomer'])->name('customer-delete');
 
-Route::get('/merk', [MerkController::class, 'index'])->name('merk-index');
-Route::get('/merk/create', [MerkController::class, 'create'])->name('merk-create');
-Route::post('/merk/store', [MerkController::class, 'storeMerk'])->name('merk-store');
-Route::get('/showmerk/{id_merk}', [MerkController::class, 'showMerk'])->name('merk-show');
-Route::post('/merk/update{id_merk}', [MerkController::class, 'updateMerk'])->name('merk-update');
-Route::get('/merk/delete/{id_merk}', [MerkController::class, 'deleteMerk'])->name('merk-delete');
-Route::get('/merk/softdelete{id_merk}',[MerkController::class, 'softDelete'])->name('merk-softdelete');
+Route::get('/category', [CategoryController::class, 'index'])->name('category-index');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category-create');
+Route::post('/category/store', [CategoryController::class, 'storeCategory'])->name('category-store');
+Route::get('/showcategory/{id_category}', [CategoryController::class, 'showCategory'])->name('category-show');
+Route::post('/category/update{id_category}', [CategoryController::class, 'updateCategory'])->name('category-update');
+Route::get('/category/delete/{id_category}', [CategoryController::class, 'deleteCategory'])->name('category-delete');
+Route::get('/category/softdelete{id_category}',[CategoryController::class, 'softDelete'])->name('category-softdelete');
 
-Route::get('/transaksi', [TransaksiController::class, 'index'])->name('trans-index');
-Route::get('/join', [TransaksiController::class, 'innerJoin'])->name('trans-join');
-Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('trans-create');
-Route::post('/transaksi/store', [TransaksiController::class, 'storeTrans'])->name('trans-store');
-Route::get('/showtransaksi/{id_transaction}', [TransaksiController::class, 'showTrans'])->name('trans-show');
-Route::post('/transaksi/update{id_transaction}', [TransaksiController::class, 'updateTrans'])->name('trans-update');
-Route::get('/transaksi/delete/{id_transaction}', [TransaksiController::class, 'deleteTrans'])->name('trans-delete');
-Route::get('/transaksi/softdelete{id_transaction}', [TransaksiController::class, 'softDelete'])->name('trans-softdelete');
+Route::get('/transaction', [TransaksiController::class, 'index'])->name('trans-index');
+Route::get('/join', [TransaksiController::class, 'innerJoin'])->name('join-index');
+Route::get('/transaction/create', [TransaksiController::class, 'create'])->name('trans-create');
+Route::post('/transaction/store', [TransaksiController::class, 'storeTrans'])->name('trans-store');
+Route::get('/showtransaction/{id_transaction}', [TransaksiController::class, 'showTrans'])->name('trans-show');
+Route::post('/transaction/update{id_transaction}', [TransaksiController::class, 'updateTrans'])->name('trans-update');
+Route::get('/transaction/delete/{id_transaction}', [TransaksiController::class, 'deleteTrans'])->name('trans-delete');
+Route::get('/transaction/softdelete{id_transaction}', [TransaksiController::class, 'softDelete'])->name('trans-softdelete');
 
+
+Route::get('/transaction/search', [TransaksiController::class, 'searchTransactions'])->name('trans-search');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

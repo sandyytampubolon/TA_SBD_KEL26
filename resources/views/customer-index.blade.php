@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product Table</title>
+    <!-- Include Bootstrap CSS (you can replace the CDN link with your local file if needed) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>PRODUKCREATE</title>
 </head>
-
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,38 +37,40 @@
     </div>
 </nav>
 
+
 <div class="container mt-5">
-    <!-- Form Transaksi -->
-    <form method="POST" enctype="multipart/form-data" action="{{ route('trans-store') }}">
-        @csrf
-        <h2>Form Transaksi</h2>
-        <div class="mb-3">
-            <label for="id_transaction" class="form-label">ID Transaction</label>
-            <input type="text" class="form-control" id="id_transaction" name="id_transaction">
-        </div>
-        <div class="mb-3">
-            <label for="fk_id_vinyl" class="form-label">ID Vinyl</label>
-            <input type="text" class="form-control" id="fk_id_vinyl" name="fk_id_vinyl">
-        </div>
-        <div class="mb-3">
-            <label for="fk_id_customer" class="form-label">ID Customer</label>
-            <input type="text" class="form-control" id="fk_id_customer" name="fk_id_customer">
-        </div>
-        <div class="mb-3">
-            <label for="transaction_date" class="form-label">Transaction Date</label>
-            <input type="date" class="form-control" id="transaction_date" name="transaction_date">
-        </div>
-        <div class="mb-3">
-            <label for="item_amount" class="form-label">Item Amount</label>
-            <input type="text" class="form-control" id="item_amount" name="item_amount">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    <h2>Customer Table</h2>
+    <a type="button" class="btn btn-info" href="{{ route('customer-create') }}">ADD CUSTOMER</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Customer</th>
+                <th>Nama Customer</th>
+                <th>Alamat</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+
+        @php $no = 1; @endphp
+        @foreach($dataCustomer as $row)
+            <tbody>
+                <tr>
+                    <th scope="row">{{ $row->id_customer }}</th>
+                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->alamat }}</td>
+                    <td>{{ $row->age }}</td>
+                    <td>
+                        <a type="button" class="btn btn-danger" href="{{ route('customer-delete', $row->id_customer) }}">Delete</a>
+                        <a type="button" class="btn btn-info" href="{{ route('customer-show', $row->id_customer) }}">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        @endforeach
+    </table>
 </div>
 
 
-<!-- Link to Bootstrap JavaScript (optional) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<!-- Include Bootstrap JS (you can replace the CDN link with your local file if needed) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

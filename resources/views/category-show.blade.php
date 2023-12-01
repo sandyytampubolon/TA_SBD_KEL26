@@ -13,27 +13,28 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">TA SBD KEL 10</a>
+        <a class="navbar-brand" href="#">VINYL STORE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('pelanggan-index')}}">Pelanggan</a>
+                    <a class="nav-link" href="{{route('customer-index')}}">Customer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('produk-index') }}">Produk</a>
+                    <a class="nav-link" href="{{ route('vinyl-index') }}">Vinyl</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('merk-index') }}">Merk</a>
+                    <a class="nav-link" href="{{route('category-index')}}">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Transaksi</a>
+                    <a class="nav-link" href="{{route('trans-index')}}">Transaksi</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('join-index')}}">Join</a>
+                </li>
             </ul>
-
         </div>
     </div>
 </nav>
@@ -43,23 +44,24 @@
         <!-- Form Produk -->
 
 
-        <form method="POST" enctype="multipart/form-data" action="{{ route('merk-update', $dataMerk->id_merk) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('category-update', $dataCategory->id_category) }}">
     @csrf
-    <h2>Form Merk</h2>
+    <h2>Form Category</h2>
     <div class="mb-3">
-        <label for="id_merk" class="form-label">ID Merk</label>
-        <input type="text" class="form-control" value="{{ $dataMerk->id_merk }}" name="id_merk">
+        <label for="id_category" class="form-label">ID Category</label>
+        <input type="text" class="form-control" value="{{ $dataCategory->id_category }}" name="id_category">
     </div>
     <div class="mb-3">
-        <label for="nama_merk" class="form-label">Nama Merk</label>
-        <input type="text" class="form-control" id="nama_merk" value="{{ $dataMerk->nama_merk }}" name="nama_merk">
+        <label for="nama_category" class="form-label">Nama Category</label>
+        <input type="text" class="form-control" id="nama_category" value="{{ $dataCategory->nama_category }}" name="nama_category">
     </div>
     <div class="mb-3">
-        <label for="country" class="form-label">Country</label>
-        <input type="text" class="form-control" id="country" value="{{ $dataMerk->country }}" name="country">
+        <label for="pop_rate" class="form-label">Pop Rate</label>
+        <input type="text" class="form-control" id="pop_rate" value="{{ $dataCategory->pop_rate }}" name="pop_rate">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
 
 
         </body>

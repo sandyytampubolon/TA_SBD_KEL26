@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Pelanggans extends Model
 {
     use HasFactory;
-    protected $table = 'transaksi_tbs'; // Replace 'nama_tabel' with the actual table name
+    protected $table = 'transaksis'; // Replace 'nama_tabel' with the actual table name
 
     protected $primaryKey = 'id_transactions';
 
     protected $fillable = [
-        'fk_id_pelanggan',
-        'fk_id_item',
+        'id_transaction',
+        'fk_id_customer',
+        'fk_id_vinyl',
         'transaction_date',
         'item_amount',
     ];
